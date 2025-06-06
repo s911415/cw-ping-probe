@@ -1,0 +1,30 @@
+{
+    "conf": {
+        "reporting": {
+            "interval": 10000
+        },
+        "probe": {
+            "interval": 250
+        },
+        "cloudwatch": {
+            "namespace": "Probe/DNS",
+            "interval": 60000,
+            "region": "us-west-2"
+        }
+    },
+    "probes": [
+        {
+            "name": "Google DNS Primary",
+            "dst": "8.8.8.8",
+            "size": 1200,
+            "timeout": 500
+        },
+        {
+            "name": "Google DNS Secondary",
+            "src": "0.0.0.0",
+            "dst": "8.8.4.4",
+            "size": 1200,
+            "timeout": 500
+        }
+    ]
+}
