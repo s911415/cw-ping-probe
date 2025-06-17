@@ -5,7 +5,6 @@ import (
 	"flag"
 	"fmt"
 	"log"
-	"math"
 	"os"
 	"strings"
 	"sync"
@@ -127,7 +126,7 @@ func pingWorker(probe Probe, probeID int, stats *ProbeStats, pingManager *PingMa
 		case <-ticker.C:
 			seq++
 			rtt, err := pingManager.SendPing(probe, id, seq, time.Duration(probe.Timeout)*time.Millisecond, probeID)
-			if seq >= math.MaxInt {
+			if seq >= (1<<16 - 1) {
 				seq = 0
 			}
 			if err != nil {
